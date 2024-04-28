@@ -11,8 +11,10 @@ import android.view.ViewGroup
 import com.example.testrome.databinding.FragmentBlankBinding
 
 
-class BlankFragment : Fragment() {
-lateinit var binding :FragmentBlankBinding
+class BlankFragment() : Fragment(){
+    lateinit var binding: FragmentBlankBinding
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,13 +28,13 @@ lateinit var binding :FragmentBlankBinding
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding =FragmentBlankBinding.inflate(layoutInflater,container,false)
+        binding = FragmentBlankBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-      stratListener()
+        stratListener()
     }
 
     private fun stratListener() {
@@ -47,16 +49,17 @@ lateinit var binding :FragmentBlankBinding
         try {
 
 
-      val text1=  binding.tx1.text.toString()
-        val text2 = binding.tx2.text.toString()
-   TaskDatabase.getdatabase( requireContext()).taskDao().insert(Task(title = text1 , description = text2))
+            val text1 = binding.tx1.text.toString()
+            val text2 = binding.tx2.text.toString()
+            TaskDatabase.getdatabase(requireContext()).taskDao()
+                .insert(Task(title = text1, description = text2))
 
-    }catch (e:Exception)
-        {
-            Log.e("", "startDatabase: e = ",e )
+        } catch (e: Exception) {
+            Log.e("", "startDatabase: e = ", e)
+        }
+
     }
 
-    }
 
 
 }
